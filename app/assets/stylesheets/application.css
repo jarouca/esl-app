@@ -63,6 +63,17 @@ h2 {
   margin-left: 50px;
 }
 
+.edit-profile {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 50px;
+}
+
+.cancel-link {
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
 .simple_form div.input {
   margin-bottom: 10px;
   clear: both;
