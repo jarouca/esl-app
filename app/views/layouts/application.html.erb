@@ -10,12 +10,14 @@
 
   <body>
     <nav class="top-bar">
-      <ul class="top-bar-links">
+      <ul class="top-bar-left">
         <li><h1 class="title"><a href="/">ESL</a></h1></li>
-
+      </ul>
+      <ul class="top-bar-right">
         <% if user_signed_in? %>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
           <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+          <li><%= link_to 'Create Word Bank', new_user_bank_path(current_user.id) %></li>
         <% else %>
           <li><%= link_to 'Sign Up', new_user_registration_path %></li>
           <li><%= link_to 'Sign In', new_user_session_path %></li>

@@ -43,12 +43,27 @@ h2 {
   list-style-type: none;
 }
 
-.top-bar-links li {
+.top-bar-left li {
   float: left;
+}
+
+.top-bar-right li {
+  float: right;
+  margin-right: 20px;
+  padding-top: 25px;
+  font-size: 18px;
+}
+
+.top-bar-right li a {
+  text-decoration: none;
 }
 
 .title {
   margin-left: 20px;
+}
+
+.title a {
+  text-decoration: none;
 }
 
 .sign-up {
@@ -58,7 +73,7 @@ h2 {
 }
 
 .sign-in {
-  margin-top: 20px;
+  padding-top: 20px;
   margin-bottom: 20px;
   margin-left: 50px;
 }
@@ -72,6 +87,15 @@ h2 {
 .cancel-link {
   margin-left: 50px;
   margin-top: 20px;
+  padding-bottom: 40px;
+}
+
+.form-box {
+  width: 300px;
+  margin-left: 40px;
+  background-color: #8cd0e0;
+  margin-top: 20px;
+  border: 5px solid #8ccce0;
 }
 
 .simple_form div.input {
@@ -163,4 +187,9 @@ label.collection_check_boxes {
 .form-links {
   margin-left: 50px;
   margin-top: 30px;
+  padding-bottom: 40px;
+}
+
+.form-bottom {
+  padding-bottom: 40px;
 }
