@@ -211,20 +211,15 @@ label.collection_check_boxes {
   margin-top: 20px;
 }
 
-.my-banks-title {
+.show-banks-title {
   text-align: center;
   margin-top: 10px;
-  float: left;
-  margin-left: 160px;
 }
 
-.banks-box {
-  background-color: #8cd0e0;
-  margin: 20px auto 20px auto;
-  width: 400px;
-  height: 600px;
-  border: 5px solid #8ccce0;
+.my-banks-title {
+  margin-left: 80px;
 }
+
 
 .bank-list {
   list-style-type: none;
@@ -240,9 +235,21 @@ label.collection_check_boxes {
   text-decoration: none;
 }
 
+.banks-box {
+  background-color: #8cd0e0;
+  margin: 20px auto 20px auto;
+  width: 400px;
+  height: 600px;
+  border: 5px solid #8ccce0;
+}
+
 .banks-box p {
   float: left;
   font-size: 15px;
-  padding-top: 25px;
-  padding-left: 20px;
+  text-align: center;
+}
+
+.edit-bank-link {
+  margin-left: 125px;
+  margin-right: 10px;
 }
