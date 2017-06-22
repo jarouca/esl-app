@@ -22,8 +22,27 @@ feature 'user updates an amplifier' do
     click_link bank.title
     click_link 'Edit Bank'
     fill_in 'Title', with: 'new bank title'
+    click_button 'Update Bank'
 
     expect(page).to have_content('Bank successfully updated.')
-    expect(page).to have_content(bank.title)
+    expect(page).to have_content('new bank title')
+  end
+
+  scenario 'user fails to provide required information' do
+    user = FactoryGirl.create(:user)
+    bank = FactoryGirl.create(:bank, user_id: user.id)
+
+    visit 'users/sign_in'
+    click_link 'Sign In'
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Sign In'
+    click_link 'View My Word Banks'
+    click_link bank.title
+    click_link 'Edit Bank'
+    fill_in 'Title', with: ''
+    click_button 'Update Bank'
+
+    expect(page).to have_content("Title can't be blank")
   end
 end
