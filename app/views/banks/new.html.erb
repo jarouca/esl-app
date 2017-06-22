@@ -1,0 +1,15 @@
+<% if @bank.errors.any? %>
+  <div id="error_explanation" class="alert">
+    <p><%= pluralize(@bank.errors.count, "error") %> prohibited this bank from being saved:</p>
+    <ul>
+    <% @bank.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="form-box">
+  <h2 class="new-word-bank">New Word Bank</h2>
+  <%= render 'shared/form', user: @user, bank: @bank %>
+</div>
