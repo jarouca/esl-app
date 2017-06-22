@@ -1,19 +1,8 @@
-<% if @bank.errors.any? %>
-  <div id="error_explanation" class="alert">
-    <p><%= pluralize(@bank.errors.count, "error") %> prohibited this bank from being saved:</p>
-    <ul>
-    <% @bank.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
 <%= form_for [@user, @bank] do |f| %>
 
   <div class="field">
-    <%= f.label :title, class: "form-label" %>
-    <%= f.text_field :title, class: "form-field" %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
   </div>
 
   <div class="actions">

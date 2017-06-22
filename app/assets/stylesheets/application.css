@@ -34,6 +34,15 @@ h2 {
   font-weight: bold;
 }
 
+.alert, .notice {
+  margin-left: 30px;
+  color: red;
+}
+
+.alert ul {
+  list-style-type: none;
+}
+
 .top-bar {
   background-color: #f18e0f;
   height: 50px;
@@ -69,6 +78,10 @@ h2 {
 .sign-up {
   margin-top: 20px;
   margin-left: 32px;
+  margin-bottom: 20px;
+}
+
+.new-word-bank {
   margin-bottom: 20px;
 }
 
@@ -192,4 +205,8 @@ label.collection_check_boxes {
 
 .form-bottom {
   padding-bottom: 40px;
+}
+
+.actions {
+  margin-top: 20px;
 }
