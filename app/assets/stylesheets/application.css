@@ -214,6 +214,8 @@ label.collection_check_boxes {
 .my-banks-title {
   text-align: center;
   margin-top: 10px;
+  float: left;
+  margin-left: 160px;
 }
 
 .banks-box {
@@ -236,4 +238,11 @@ label.collection_check_boxes {
 
 .bank-list li a {
   text-decoration: none;
+}
+
+.banks-box p {
+  float: left;
+  font-size: 15px;
+  padding-top: 25px;
+  padding-left: 20px;
 }
