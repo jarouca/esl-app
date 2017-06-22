@@ -1,5 +1,9 @@
 class BanksController < ApplicationController
 
+  def index
+    @banks = Bank.where(user_id: params["user_id"])
+  end
+
   def new
     @bank = Bank.new
     @user = current_user

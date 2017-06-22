@@ -1,0 +1,8 @@
+<div class="banks-box">
+  <h2 class="my-banks-title">My Word Banks</h2>
+  <ul class="bank-list">
+    <% @banks.each do |bank| %>
+      <li class="bank-list-item"><%= link_to "#{bank.title}", user_bank_path(current_user.id, bank) %></li>
+    <% end %>
+  </ul>
+</div>
