@@ -1,0 +1,5 @@
+<ul>
+  <% @banks.each do |bank| %>
+    <li><%= link_to "#{bank.title}", user_bank_path(current_user.id, bank) %></li>
+  <% end %>
+</ul>
