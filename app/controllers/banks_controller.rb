@@ -44,6 +44,16 @@ class BanksController < ApplicationController
     end
   end
 
+  def destroy
+    bank = Bank.find(params["id"])
+
+    if bank.user_id == current_user.id
+      bank.destroy
+      flash[:notice] = "Bank deleted successfully"
+      redirect_to user_banks_path
+    end
+  end
+
   private
 
   def bank_params

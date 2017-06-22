@@ -1,6 +1,8 @@
 <div class="banks-box">
-  <h2 class="my-banks-title">
+  <h2 class="show-banks-title">
     <%= @bank.title %>
   </h2>
-  <p><%= link_to 'Edit Bank', edit_user_bank_path(@bank.user_id, @bank) %></p>
+  <p class="edit-bank-link"><%= link_to 'Edit Bank', edit_user_bank_path(@bank.user_id, @bank) %></p>
+  <p><%= link_to 'Delete Bank', user_bank_path(@bank.user_id, @bank), method: :delete %></p>
+
 </div>
