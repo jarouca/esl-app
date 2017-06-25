@@ -6,6 +6,7 @@ class BanksController < ApplicationController
 
   def show
     @bank = Bank.find(params["id"])
+    @word = Word.new
   end
 
   def edit

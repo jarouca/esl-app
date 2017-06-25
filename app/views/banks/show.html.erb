@@ -6,3 +6,16 @@
   <p><%= link_to 'Delete Bank', user_bank_path(@bank.user_id, @bank), method: :delete %></p>
 
 </div>
+
+<%= form_for [@bank, @word] do |f| %>
+
+  <div class="field">
+    <%= f.label :add_word %>
+    <%= f.text_field :word %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
