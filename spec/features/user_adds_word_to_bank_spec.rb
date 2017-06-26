@@ -27,7 +27,7 @@ feature 'user adds word to bank' do
     click_link 'View My Word Banks'
     click_link bank.title
     fill_in 'Add Word', with: 'incredible'
-    click_button 'Add Word'
+    click_button 'Create Word'
 
     expect(page).to have_content('Word added successfully.')
     expect(page).to have_content('incredible')
