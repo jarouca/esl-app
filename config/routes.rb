@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   end
 
   resources :banks do
-    resources :words 
+    resources :words
   end
+
 
   root 'users#index'
 end

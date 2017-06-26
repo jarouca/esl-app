@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user deletes an amplifier' do
+feature 'user deletes a bank' do
   # As an authenticated user
   # I want to delete my bank
   # So I can remove it from my profile if I am done studying those words
