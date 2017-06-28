@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :words
   end
 
+  resources :words, only: [:index]
 
   root 'users#index'
 end

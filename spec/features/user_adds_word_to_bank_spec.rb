@@ -28,25 +28,72 @@ feature 'user adds word to bank' do
     click_link bank.title
     fill_in 'Add Word', with: 'incredible'
     click_button 'Create Word'
+    expect(page).to have_content("We found the following part(s) of speech and definition(s) for 'incredible'. Please select the one you would like to add to your word bank.")
+    choose("word_incredible___adjective___beyond_belief_or_understanding")
+    click_button 'Create Word'
 
     expect(page).to have_content('Word added successfully.')
     expect(page).to have_content('incredible')
+    expect(page).to have_content('(adjective), beyond belief or understanding')
   end
 
   scenario "authenticated user is able to confirm which definition they want to select when they've entered a word that has more than one definition" do
+    user = FactoryGirl.create(:user)
+    bank = FactoryGirl.create(:bank, user_id: user.id)
 
-  end
+    visit 'users/sign_in'
+    click_link 'Sign In'
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Sign In'
+    click_link 'View My Word Banks'
+    click_link bank.title
+    fill_in 'Add Word', with: 'boat'
+    click_button 'Create Word'
 
-  scenario "authenticated user is able to confirm which word they want to select when they've entered a word that shares the same spelling with other word(s)" do
+    expect(page).to have_content("We found the following part(s) of speech and definition(s) for 'boat'. Please select the one you would like to add to your word bank.")
+    expect(page).to have_content('(noun), a small vessel for travel on water')
+    expect(page).to have_content('(noun), a dish (often boat-shaped) for serving gravy or sauce')
+    expect(page).to have_content('(verb), ride in a boat on water')
 
+    choose("word_boat___noun___a_small_vessel_for_travel_on_water")
+    click_button 'Create Word'
+    expect(page).to have_content('Word added successfully.')
+    expect(page).to have_content('boat (noun), a small vessel for travel on water')
   end
 
   scenario "authenticated user mispells word" do
-    # we don't have a word matching that, did you mean one of these? maybe API has a search for similarly spelled words to generate a list?
+    user = FactoryGirl.create(:user)
+    bank = FactoryGirl.create(:bank, user_id: user.id)
+
+    visit 'users/sign_in'
+    click_link 'Sign In'
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Sign In'
+    click_link 'View My Word Banks'
+    click_link bank.title
+    fill_in 'Add Word', with: 'ahjsgfshj'
+    click_button 'Create Word'
+
+    expect(page).to have_content('We did not find any matches for that word. Please check the spelling and try again')
   end
 
-  scenario "authenticated user enter gibberish" do
+  scenario "authenticated user enters a blank string" do
+    user = FactoryGirl.create(:user)
+    bank = FactoryGirl.create(:bank, user_id: user.id)
 
+    visit 'users/sign_in'
+    click_link 'Sign In'
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Sign In'
+    click_link 'View My Word Banks'
+    click_link bank.title
+    fill_in 'Add Word', with: ''
+    click_button 'Create Word'
+
+    expect(page).to have_content('We did not find any matches for that word. Please check the spelling and try again')
   end
 
 end
