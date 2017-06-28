@@ -4,5 +4,22 @@
   </h2>
   <p class="edit-bank-link"><%= link_to 'Edit Bank', edit_user_bank_path(@bank.user_id, @bank) %></p>
   <p><%= link_to 'Delete Bank', user_bank_path(@bank.user_id, @bank), method: :delete %></p>
-
+  <ul>
+    <% @bank.words.each do |word| %>
+      <li><%= word.word %> <%= word.part_of_speech %>, <%= word.definition %></li>
+    <% end %>
+  </ul>
 </div>
+
+<%= form_for [@bank, @word], method: :get do |f| %>
+
+  <div class="field">
+    <%= f.label :word, "Add Word" %>
+    <%= f.text_field :word %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

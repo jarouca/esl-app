@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user updates an amplifier' do
+feature 'user updates a bank' do
   # As an authenticated user
   # I want to update a bank's title
   # So that I can correct errors or provide new information

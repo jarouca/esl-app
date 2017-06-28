@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user views a list of all amplifiers submitted for review' do
+feature 'user views a list of all of their banks' do
   # As an authenticated user
   # I want to view a list of my word banks
   # So I can see all the banks I've created
