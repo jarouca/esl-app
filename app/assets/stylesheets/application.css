@@ -253,3 +253,25 @@ label.collection_check_boxes {
   margin-left: 125px;
   margin-right: 10px;
 }
+
+.add-word-box {
+  background-color: #8cd0e0;
+  border: 5px solid #8ccce0;
+  float: left;
+  margin-top: 100px;
+  margin-left: 60px;
+  padding: 20px;
+}
+
+.words-list {
+  list-style-type: none;
+}
+
+.words-list  li {
+  float: left;
+  margin: 5px auto 5px auto;
+}
+
+.words-list a {
+  font-size: 15px;
+}

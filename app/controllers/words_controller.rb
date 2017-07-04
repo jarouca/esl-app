@@ -31,17 +31,27 @@ class WordsController < ApplicationController
   def create
     @bank = Bank.find(params["bank_id"])
 
-    definition = params["word"].split(",")
+      definition = params["word"].split(",")
 
-    if @bank.words << Word.new(
-      word: definition[0],
-      definition: definition[2],
-      part_of_speech: definition[1]
-      )
+      if @bank.words << Word.new(
+        word: definition[0],
+        definition: definition[2],
+        part_of_speech: definition[1]
+        )
 
-      flash[:notice] = "Word added successfully."
+        flash[:notice] = "Word added successfully."
+        redirect_to @bank
+      end
+  end
+
+  def destroy
+    @bank = Bank.find(params["bank_id"])
+    word = Word.find(params["id"])
+
+    if @bank.user_id == current_user.id
+      word.destroy
+      flash[:notice] = "Word deleted successfully."
       redirect_to @bank
     end
   end
-
 end
