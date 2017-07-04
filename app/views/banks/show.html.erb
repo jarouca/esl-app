@@ -1,22 +1,5 @@
-<div class="banks-box">
-  <h2 class="show-banks-title">
-    <%= @bank.title %>
-  </h2>
-  <p class="edit-bank-link"><%= link_to 'Edit Bank', edit_user_bank_path(@bank.user_id, @bank) %></p>
-  <p><%= link_to 'Delete Bank', user_bank_path(@bank.user_id, @bank), method: :delete %></p>
-  <ul>
-    <% @bank.words.each do |word| %>
-      <li>
-        <%= word.word %>
-        <%= word.part_of_speech %>,
-        <%= word.definition %>
-        <%= link_to 'Delete Word', bank_word_path(@bank, word), method: :delete %>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
-<%= form_for [@bank, @word], method: :get do |f| %>
+<div class="add-word-box">
+  <%= form_for [@bank, @word], method: :get do |f| %>
 
   <div class="field">
     <%= f.label :word, "Add Word" %>
@@ -27,4 +10,23 @@
     <%= f.submit %>
   </div>
 
-<% end %>
+  <% end %>
+</div>
+
+<div class="banks-box">
+  <h2 class="show-banks-title">
+    <%= @bank.title %>
+  </h2>
+  <p class="edit-bank-link"><%= link_to 'Edit Bank', edit_user_bank_path(@bank.user_id, @bank) %></p>
+  <p><%= link_to 'Delete Bank', user_bank_path(@bank.user_id, @bank), method: :delete %></p>
+  <ul class="words-list">
+    <% @bank.words.each do |word| %>
+      <li>
+        <strong><%= word.word %></strong>
+        <%= word.part_of_speech %>,
+        <%= word.definition %>
+        <p class="delete-word-link"><%= link_to 'Delete Word', bank_word_path(@bank, word), method: :delete %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>
