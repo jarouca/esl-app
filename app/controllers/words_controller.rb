@@ -44,4 +44,14 @@ class WordsController < ApplicationController
     end
   end
 
+  def destroy
+    @bank = Bank.find(params["bank_id"])
+    word = Word.find(params["id"])
+
+    if @bank.user_id == current_user.id
+      word.destroy
+      flash[:notice] = "Word deleted successfully."
+      redirect_to @bank
+    end
+  end
 end

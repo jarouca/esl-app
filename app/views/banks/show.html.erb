@@ -6,7 +6,12 @@
   <p><%= link_to 'Delete Bank', user_bank_path(@bank.user_id, @bank), method: :delete %></p>
   <ul>
     <% @bank.words.each do |word| %>
-      <li><%= word.word %> <%= word.part_of_speech %>, <%= word.definition %></li>
+      <li>
+        <%= word.word %>
+        <%= word.part_of_speech %>,
+        <%= word.definition %>
+        <%= link_to 'Delete Word', bank_word_path(@bank, word), method: :delete %>
+      </li>
     <% end %>
   </ul>
 </div>
