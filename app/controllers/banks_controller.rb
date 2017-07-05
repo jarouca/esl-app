@@ -7,6 +7,7 @@ class BanksController < ApplicationController
   def show
     @bank = Bank.find(params["id"])
     @word = Word.new
+    @words = Word.where(bank_id: @bank.id)
   end
 
   def edit

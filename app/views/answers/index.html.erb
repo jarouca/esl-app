@@ -4,13 +4,15 @@
   <ul>
     <% @choices.each do |choice| %>
       <li>
-        <%= radio_button_tag(:choice, "#{choice}") %>
-        <%= label_tag(:choice, "#{choice}") %>
+        <%= radio_button_tag(:choice, "#{choice}" %>
+        <%= label_tag(:choice, "#{choice}" %>
       </li>
     <% end %>
   </ul>
 
+
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

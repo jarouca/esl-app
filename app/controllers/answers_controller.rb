@@ -1,9 +1,10 @@
-class DrillsController < ApplicationController
+class AnswersController < ApplicationController
   def index
+    @answer = Answer.new
     @bank = Bank.find(params["bank_id"])
     @word = @bank.words.sample
-    @answers = []
-    @answers << "(#{@word.part_of_speech}), #{@word.definition}"
+    @choices = []
+    @choices << "(#{@word.part_of_speech}), #{@word.definition}"
 
     2.times do
       response = HTTParty.get(
@@ -14,9 +15,9 @@ class DrillsController < ApplicationController
         }
       ).parsed_response
 
-      @answers << "(#{response["results"][0]["partOfSpeech"]}), #{response["results"][0]["definition"]}"
+      @choices << "(#{response["results"][0]["partOfSpeech"]}), #{response["results"][0]["definition"]}"
     end
-
+    @choices.shuffle!
   end
 end
 
