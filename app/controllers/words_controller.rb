@@ -1,7 +1,4 @@
 class WordsController < ApplicationController
-  # response["definitions"].length
-  # response["definitions"][0]["definition"]
-  # response["definitions"].each {|definition|puts definition["partOfSpeech"]+ definition["definition"] }
 
   def index
     @bank = Bank.find(params["bank_id"])
