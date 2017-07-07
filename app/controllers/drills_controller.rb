@@ -23,7 +23,7 @@ class DrillsController < ApplicationController
         }
       ).parsed_response
 
-      @choices << "(#{response["results"][0]["partOfSpeech"]}),#{response["results"][0]["definition"]}"
+      @choices << "(#{response["results"][0]["partOfSpeech"]}), #{response["results"][0]["definition"]}"
     end
     @choices.shuffle!
   end

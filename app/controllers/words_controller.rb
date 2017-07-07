@@ -1,4 +1,19 @@
 class WordsController < ApplicationController
+#params["choice"]
+#params["word_id"]
+#params["id"]
+  def update
+    word = Word.find(params["id"])
+    if params["choice"].split(",")[1].strip! == word.definition.strip!
+      word.correct_answers += 1
+      flash[:notice] = "Correct!"
+    else
+      word.incorrect_answers += 1
+      flash[:notice] = "Incorrect"
+    end
+    word.total_drills += 1
+    redirect_to bank_drills_path
+  end
 
   def index
     @bank = Bank.find(params["bank_id"])
