@@ -3,5 +3,5 @@ class Answer < ApplicationRecord
 
   validates :drill_id, presence: true, numericality: { only_integer: true }
   validates :word_id, presence: true, numericality: { only_integer: true }
-  validate :correct, presence: true 
+  validates :correct, presence: true 
 end

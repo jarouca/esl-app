@@ -1,6 +1,6 @@
 <p>The definition of <strong><%= @word.word %></strong> is:</p>
 
-<%= form_for [@bank, @answer] do |f| %>
+<%= form_for [@bank, @word] do |f| %>
   <ul>
     <% @choices.each do |choice| %>
       <li>
@@ -9,6 +9,8 @@
       </li>
     <% end %>
   </ul>
+
+  <%= hidden_field_tag(:word_id, @word.id) %>
 
   <div class="actions">
     <%= f.submit %>

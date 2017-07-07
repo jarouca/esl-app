@@ -27,18 +27,24 @@ class WordsController < ApplicationController
 
   def create
     @bank = Bank.find(params["bank_id"])
+    words = @bank.words
+    definition = params["word"].split(",")
+    word = Word.new(
+      word: definition[0],
+      definition: definition[2],
+      part_of_speech: definition[1],
+      bank_id: params["bank_id"]
+      )
 
-      definition = params["word"].split(",")
+    if !words.empty?
+      words.sort_by! { |word| word.total_drills }
+      word.total_drills = words[0].total_drills
+    end
 
-      if @bank.words << Word.new(
-        word: definition[0],
-        definition: definition[2],
-        part_of_speech: definition[1]
-        )
-
-        flash[:notice] = "Word added successfully."
-        redirect_to @bank
-      end
+    if word.save
+      flash[:notice] = "Word added successfully."
+      redirect_to @bank
+    end
   end
 
   def destroy

@@ -11,8 +11,10 @@ Rails.application.routes.draw do
   end
 
   resources :banks do
-    resources :answers
+    resources :drills
   end
+
+
 
   resources :words, only: [:index]
 

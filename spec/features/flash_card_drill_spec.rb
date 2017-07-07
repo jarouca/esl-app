@@ -18,11 +18,16 @@ feature 'flash card drill words from word bank' do
     choose("word_incredible___adjective___beyond_belief_or_understanding")
     click_button 'Create Word'
     click_link 'Drill Vocabulary Words'
-    choose("word_incredible___adjective___beyond_belief_or_understanding")
+    choose("choice___adjective____beyond_belief_or_understanding")
 
+    click_button 'Create Answer'
     expect(page).to have_content('Correct!')
   end
 
   scenario 'user selects incorrect definition for vocabulary word' do
+  end
+
+  scenario 'word is not repeated until all words have been driller' do
+    # create bank w/ 2 words, one of them having total answer pre prgrammed to 1, expect word to not be that word
   end
 end
