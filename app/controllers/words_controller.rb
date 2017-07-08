@@ -1,18 +1,21 @@
 class WordsController < ApplicationController
-#params["choice"]
-#params["word_id"]
-#params["id"]
   def update
-    word = Word.find(params["id"])
-    if params["choice"].split(",")[1].strip! == word.definition.strip!
-      word.correct_answers += 1
-      flash[:notice] = "Correct!"
+    if params["choice"].nil?
+      flash[:notice] = "Please be sure to select a definition"
+      redirect_to bank_drills_path
     else
-      word.incorrect_answers += 1
-      flash[:notice] = "Incorrect"
+      word = Word.find(params["id"])
+      if params["choice"].split(",")[1].strip! == word.definition.strip!
+        word.correct_answers += 1
+        flash[:notice] = "Correct!"
+      else
+        word.incorrect_answers += 1
+        flash[:notice] = "Incorrect"
+      end
+      word.total_drills += 1
+      word.save
+      redirect_to bank_drills_path
     end
-    word.total_drills += 1
-    redirect_to bank_drills_path
   end
 
   def index
@@ -52,7 +55,7 @@ class WordsController < ApplicationController
       )
 
     if !words.empty?
-      words.sort_by! { |word| word.total_drills }
+      words.sort_by { |word| word.total_drills }
       word.total_drills = words[0].total_drills
     end
 
