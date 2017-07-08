@@ -59,7 +59,7 @@ feature 'user adds word to bank' do
     choose("word_boat___noun___a_small_vessel_for_travel_on_water")
     click_button 'Add Word'
     expect(page).to have_content('Word added successfully.')
-    expect(page).to have_content('boat (noun), a small vessel for travel on water')
+    expect(page).to have_content('boat - (noun), a small vessel for travel on water')
   end
 
   scenario "authenticated user mispells word" do

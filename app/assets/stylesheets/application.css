@@ -22,6 +22,8 @@ html, body, h1, h2, h3, h4, p, div, ul, li {
   font-size: 100%;
 }
 
+
+
 h1 {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 40px;
@@ -32,6 +34,10 @@ h2 {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 30px;
   font-weight: bold;
+}
+
+* {
+  font-family: georgia;
 }
 
 .alert, .notice {
@@ -108,7 +114,7 @@ h2 {
   margin-left: 40px;
   background-color: #8cd0e0;
   margin-top: 20px;
-  border: 5px solid #8ccce0;
+  border: 5px solid #8cbee0;
 }
 
 .simple_form div.input {
@@ -238,30 +244,52 @@ label.collection_check_boxes {
 .banks-box {
   background-color: #8cd0e0;
   margin: 20px auto 20px auto;
-  width: 400px;
+  width: 450px;
   height: 600px;
-  border: 5px solid #8ccce0;
+  border: 5px solid #8cbee0;
 }
 
-.banks-box p {
+.bank-show-box {
+  background-color: #8cd0e0;
+  margin: 20px auto 20px auto;
+  width: 450px;
+  height: 600px;
+  border: 5px solid #8cbee0;
+  float: left;
+}
+
+.banks-box p, .bank-show-box p {
   float: left;
   font-size: 15px;
   text-align: center;
 }
 
 .edit-bank-link {
-  margin-left: 125px;
+  margin-left: 150px;
   margin-right: 10px;
+}
+
+.add-word-column {
+  float: left;
 }
 
 .add-word-box {
   background-color: #8cd0e0;
-  border: 5px solid #8ccce0;
+  border: 5px solid #8cbee0;
   float: left;
-  margin-top: 100px;
+  margin-top: 20px;
   margin-left: 60px;
+  margin-right: 40px;
   padding: 20px;
 }
+
+.add-word-paragraph {
+  width: 300px;
+  margin-top: 40px;
+  margin-left: 30px;
+  font-size: 18px;
+}
+
 
 .words-list {
   list-style-type: none;
@@ -269,9 +297,35 @@ label.collection_check_boxes {
 
 .words-list  li {
   float: left;
-  margin: 5px auto 5px auto;
+  margin: 10px auto 5px auto;
+  font-size: 18px;
 }
 
-.words-list a {
+.link  {
+  display: block;
   font-size: 15px;
+  width: 400px;
+  text-align: left;
+}
+
+.drill-link-box {
+
+}
+
+.drill-link {
+  /*background-color: #8cd0e0;
+  border: 5px solid #8ccce0;*/
+
+  font-size: 25px;
+  margin-top: 20px;
+  margin-left: 70px;
+  float: left;
+}
+
+.drill-link-paragraph {
+  font-size: 18px;
+  width: 400px;
+  float: left;
+  margin-left: 20px;
+  margin-top: 40px;
 }
