@@ -28,7 +28,3 @@ class DrillsController < ApplicationController
     @choices.shuffle!
   end
 end
-
-#response["word"]
-#response["results"][0]["definition"]
-#response["results"][0]["partOfSpeech"]
