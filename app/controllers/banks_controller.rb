@@ -7,6 +7,7 @@ class BanksController < ApplicationController
   def show
     @bank = Bank.find(params["id"])
     @word = Word.new
+    @words = Word.where(bank_id: @bank.id)
   end
 
   def edit
@@ -19,7 +20,7 @@ class BanksController < ApplicationController
     @bank.update(bank_params)
 
     if @bank.save
-      flash[:notice] = 'Bank successfully updated.'
+      flash[:alert] = 'Bank successfully updated.'
       redirect_to user_bank_path
     else
       @user = current_user
@@ -37,8 +38,8 @@ class BanksController < ApplicationController
     @bank.user_id = params["user_id"]
 
     if @bank.save
-      flash[:notice] = "Bank successfully created."
-      redirect_to root_path
+      flash[:alert] = "Bank successfully created."
+      redirect_to user_bank_path(current_user, @bank)
     else
       @user = current_user
       render :new
@@ -50,7 +51,7 @@ class BanksController < ApplicationController
 
     if bank.user_id == current_user.id
       bank.destroy
-      flash[:notice] = "Bank deleted successfully"
+      flash[:alert] = "Bank deleted successfully"
       redirect_to user_banks_path
     end
   end

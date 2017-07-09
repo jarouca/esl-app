@@ -4,7 +4,7 @@
   <ul>
     <% @definitions.each do |definition| %>
       <li>
-        <%= radio_button_tag(:word, "#{@new_word}, (#{definition["partOfSpeech"]}), #{definition["definition"]}") %>
+        <%= radio_button_tag(:word, "#{@new_word}, (#{definition["partOfSpeech"]}), #{definition["definition"]}", required: true) %>
         <%= label_tag(:word, "(#{definition["partOfSpeech"]}), #{definition["definition"]}") %>
       </li>
     <% end %>
@@ -12,7 +12,7 @@
 
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add Word"%>
   </div>
 
 <% end %>

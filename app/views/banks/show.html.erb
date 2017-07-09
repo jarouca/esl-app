@@ -1,32 +1,52 @@
-<div class="add-word-box">
-  <%= form_for [@bank, @word], method: :get do |f| %>
+<div class="add-word-column">
+  <p class="add-word-paragraph">
+    To add a word to your word bank, enter it here and we will help you find the correct definition.
+  </p>
 
-  <div class="field">
-    <%= f.label :word, "Add Word" %>
-    <%= f.text_field :word %>
+  <div class="add-word-box">
+    <%= form_for [@bank, @word], method: :get do |f| %>
+
+    <div class="field">
+      <%= f.label :word, "Add Word" %>
+      <%= f.text_field :word %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Add Word"%>
+    </div>
+
+    <% end %>
   </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-
-  <% end %>
 </div>
 
-<div class="banks-box">
+<div class="bank-show-box">
   <h2 class="show-banks-title">
     <%= @bank.title %>
   </h2>
   <p class="edit-bank-link"><%= link_to 'Edit Bank', edit_user_bank_path(@bank.user_id, @bank) %></p>
   <p><%= link_to 'Delete Bank', user_bank_path(@bank.user_id, @bank), method: :delete %></p>
   <ul class="words-list">
-    <% @bank.words.each do |word| %>
-      <li>
-        <strong><%= word.word %></strong>
+    <% @words.each do |word| %>
+      <li class="word">
+        <strong><%= word.word %></strong> -
         <%= word.part_of_speech %>,
         <%= word.definition %>
-        <p class="delete-word-link"><%= link_to 'Delete Word', bank_word_path(@bank, word), method: :delete %></p>
       </li>
+        <p class="delete-word-link"><%= link_to 'Delete Word', bank_word_path(@bank, word), method: :delete, class: "link" %></p>
     <% end %>
   </ul>
 </div>
+
+<% if !@bank.words[0].nil? %>
+  <p class = "drill-link-paragraph">
+    Once you have a few words added to your word bank, follow this link to practice with them:
+  </p>
+
+  <div class="drill-link-box">
+    <strong><%= link_to 'Drill Vocabulary Words', bank_drills_path(@bank), class: "drill-link" %></strong>
+  </div>
+<% end %>
+
+<p class="bank-show-quote">
+  "Thousands of geniuses live and die undiscovered - either by themselves or by others." - Mark twain
+</p>

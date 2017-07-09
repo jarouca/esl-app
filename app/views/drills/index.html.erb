@@ -1,0 +1,24 @@
+<p class="message"><%= @message %></p>
+
+<div class="drill-box">
+  <p class="drill-sentence">The definition of <strong><%= @word.word %></strong> is:</p>
+
+  <%= form_for [@bank, @word] do |f| %>
+    <ul>
+      <% @choices.each do |choice| %>
+        <li class="drill-choice">
+          <%= radio_button_tag(:choice, "#{choice}") %>
+          <%= label_tag(:choice, "#{choice}") %>
+        </li>
+      <% end %>
+    </ul>
+
+    <div class="drill-button">
+      <%= f.submit "Submit Answer" %>
+    </div>
+  <% end %>
+</div>
+
+<p class="drills-index-quote">
+  "I know not how to aid you, save in the assurance of one of mature age, and much severe experience, that you can not fail, if you resolutely determine, that you will not." - Abraham Lincoln
+</p>

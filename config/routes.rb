@@ -10,6 +10,12 @@ Rails.application.routes.draw do
     resources :words
   end
 
+  resources :banks do
+    resources :drills
+  end
+
+
+
   resources :words, only: [:index]
 
   root 'users#index'

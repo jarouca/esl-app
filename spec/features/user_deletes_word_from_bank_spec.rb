@@ -15,6 +15,7 @@ feature 'user deletes word form bank' do
   scenario 'authenticated user deletes word from bank' do
     user = FactoryGirl.create(:user)
     bank = FactoryGirl.create(:bank, user_id: user.id)
+    word = FactoryGirl.create(:word, bank: bank, part_of_speech: "(adjective)", definition: " beyond belief or understanding" )
 
     visit 'users/sign_in'
     click_link 'Sign In'
@@ -23,11 +24,6 @@ feature 'user deletes word form bank' do
     click_button 'Sign In'
     click_link 'View My Word Banks'
     click_link bank.title
-    fill_in 'Add Word', with: 'incredible'
-    click_button 'Create Word'
-    expect(page).to have_content("We found the following part(s) of speech and definition(s) for 'incredible'. Please select the one you would like to add to your word bank.")
-    choose("word_incredible___adjective___beyond_belief_or_understanding")
-    click_button 'Create Word'
     click_link 'Delete Word'
 
     expect(page).to have_content('Word deleted successfully.')

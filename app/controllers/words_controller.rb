@@ -1,7 +1,22 @@
 class WordsController < ApplicationController
-  # response["definitions"].length
-  # response["definitions"][0]["definition"]
-  # response["definitions"].each {|definition|puts definition["partOfSpeech"]+ definition["definition"] }
+  def update
+    if params["choice"].nil?
+      flash[:alert] = "Please be sure to select a definition"
+      redirect_to bank_drills_path
+    else
+      word = Word.find(params["id"])
+      if params["choice"].split(",")[1].strip! == word.definition.strip
+        word.correct_answers += 1
+        flash[:notice] = "Correct! Try this word next:"
+      else
+        word.incorrect_answers += 1
+        flash[:notice] = "Incorrect, try this word next:"
+      end
+      word.total_drills += 1
+      word.save
+      redirect_to bank_drills_path
+    end
+  end
 
   def index
     @bank = Bank.find(params["bank_id"])
@@ -18,7 +33,7 @@ class WordsController < ApplicationController
     ).parsed_response
 
     if response["definitions"].nil?
-      flash[:notice] = 'We did not find any matches for that word. Please check the spelling and try again'
+      flash[:alert] = 'We did not find any matches for that word. Please check the spelling and try again'
 
       redirect_to user_bank_path(current_user, @bank)
     end
@@ -30,18 +45,24 @@ class WordsController < ApplicationController
 
   def create
     @bank = Bank.find(params["bank_id"])
+    words = @bank.words
+    definition = params["word"].split(",")
+    word = Word.new(
+      word: definition[0],
+      definition: definition[2],
+      part_of_speech: definition[1],
+      bank_id: params["bank_id"]
+      )
 
-      definition = params["word"].split(",")
+    if !words.empty?
+      words.sort_by { |word| word.total_drills }
+      word.total_drills = words[0].total_drills
+    end
 
-      if @bank.words << Word.new(
-        word: definition[0],
-        definition: definition[2],
-        part_of_speech: definition[1]
-        )
-
-        flash[:notice] = "Word added successfully."
-        redirect_to @bank
-      end
+    if word.save
+      flash[:alert] = "Word added successfully."
+      redirect_to @bank
+    end
   end
 
   def destroy
@@ -50,7 +71,7 @@ class WordsController < ApplicationController
 
     if @bank.user_id == current_user.id
       word.destroy
-      flash[:notice] = "Word deleted successfully."
+      flash[:alert] = "Word deleted successfully."
       redirect_to @bank
     end
   end

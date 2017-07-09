@@ -27,10 +27,10 @@ feature 'user adds word to bank' do
     click_link 'View My Word Banks'
     click_link bank.title
     fill_in 'Add Word', with: 'incredible'
-    click_button 'Create Word'
+    click_button 'Add Word'
     expect(page).to have_content("We found the following part(s) of speech and definition(s) for 'incredible'. Please select the one you would like to add to your word bank.")
     choose("word_incredible___adjective___beyond_belief_or_understanding")
-    click_button 'Create Word'
+    click_button 'Add Word'
 
     expect(page).to have_content('Word added successfully.')
     expect(page).to have_content('incredible')
@@ -49,7 +49,7 @@ feature 'user adds word to bank' do
     click_link 'View My Word Banks'
     click_link bank.title
     fill_in 'Add Word', with: 'boat'
-    click_button 'Create Word'
+    click_button 'Add Word'
 
     expect(page).to have_content("We found the following part(s) of speech and definition(s) for 'boat'. Please select the one you would like to add to your word bank.")
     expect(page).to have_content('(noun), a small vessel for travel on water')
@@ -57,9 +57,9 @@ feature 'user adds word to bank' do
     expect(page).to have_content('(verb), ride in a boat on water')
 
     choose("word_boat___noun___a_small_vessel_for_travel_on_water")
-    click_button 'Create Word'
+    click_button 'Add Word'
     expect(page).to have_content('Word added successfully.')
-    expect(page).to have_content('boat (noun), a small vessel for travel on water')
+    expect(page).to have_content('boat - (noun), a small vessel for travel on water')
   end
 
   scenario "authenticated user mispells word" do
@@ -74,7 +74,7 @@ feature 'user adds word to bank' do
     click_link 'View My Word Banks'
     click_link bank.title
     fill_in 'Add Word', with: 'ahjsgfshj'
-    click_button 'Create Word'
+    click_button 'Add Word'
 
     expect(page).to have_content('We did not find any matches for that word. Please check the spelling and try again')
   end
@@ -91,7 +91,7 @@ feature 'user adds word to bank' do
     click_link 'View My Word Banks'
     click_link bank.title
     fill_in 'Add Word', with: ''
-    click_button 'Create Word'
+    click_button 'Add Word'
 
     expect(page).to have_content('We did not find any matches for that word. Please check the spelling and try again')
   end
