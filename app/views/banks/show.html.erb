@@ -37,10 +37,16 @@
   </ul>
 </div>
 
-<p class = "drill-link-paragraph">
-  Once you have a few words added to your word bank, follow this link to practice with them:
-</p>
+<% if !@bank.words[0].nil? %>
+  <p class = "drill-link-paragraph">
+    Once you have a few words added to your word bank, follow this link to practice with them:
+  </p>
 
-<div class="drill-link-box">
-  <strong><%= link_to 'Drill Vocabulary Words', bank_drills_path(@bank), class: "drill-link" %></strong>
-</div>
+  <div class="drill-link-box">
+    <strong><%= link_to 'Drill Vocabulary Words', bank_drills_path(@bank), class: "drill-link" %></strong>
+  </div>
+<% end %>
+
+<p class="bank-show-quote">
+  "Thousands of geniuses live and die undiscovered - either by themselves or by others." - Mark twain
+</p>
