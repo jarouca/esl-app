@@ -5,7 +5,7 @@ class WordsController < ApplicationController
       redirect_to bank_drills_path
     else
       word = Word.find(params["id"])
-      if params["choice"].split(",")[1].strip! == word.definition
+      if params["choice"].split(",")[1].strip! == word.definition.strip
         word.correct_answers += 1
         flash[:notice] = "Correct! Try this word next:"
       else

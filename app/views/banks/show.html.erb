@@ -27,7 +27,7 @@
   <p><%= link_to 'Delete Bank', user_bank_path(@bank.user_id, @bank), method: :delete %></p>
   <ul class="words-list">
     <% @words.each do |word| %>
-      <li>
+      <li class="word">
         <strong><%= word.word %></strong> -
         <%= word.part_of_speech %>,
         <%= word.definition %>

@@ -39,7 +39,7 @@ class BanksController < ApplicationController
 
     if @bank.save
       flash[:alert] = "Bank successfully created."
-      redirect_to root_path
+      redirect_to user_bank_path(current_user, @bank)
     else
       @user = current_user
       render :new

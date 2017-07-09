@@ -1,5 +1,12 @@
 <% if !current_user %>
-  <p class="welcome">Welcome, please sign in or sign up to continue.</p>
+  <p class="welcome">
+    Welcome to E-Flash, where you can build custom vocabulary word banks and flash card drill those words to learn definitions and parts of speech. Please sign in or sign up to continue.
+  </p>
+<% else %>
+  <p class="welcome">
+    Click 'Create Word Bank' to begin building a new word bank or
+    'View My Word Banks' to work with a bank you have already built.
+  </p>
 <% end %>
 
 <p class="users-index-quote">
