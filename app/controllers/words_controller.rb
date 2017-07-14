@@ -1,7 +1,7 @@
 class WordsController < ApplicationController
   def update
     if params["choice"].nil?
-      flash[:alert] = "Please be sure to select a definition"
+      flash[:notice] = "Please be sure to select a definition"
       redirect_to bank_drills_path
     else
       word = Word.find(params["id"])
@@ -53,7 +53,7 @@ class WordsController < ApplicationController
       part_of_speech: definition[1],
       bank_id: params["bank_id"]
       )
-
+    #to ensure every word is drilled an equal amount of times, set the word.total_drills equal to the current lowest word.total_drills
     if !words.empty?
       words.sort_by { |word| word.total_drills }
       word.total_drills = words[0].total_drills

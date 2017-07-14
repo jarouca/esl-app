@@ -13,3 +13,21 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(document).ready(function() {
+  $('.edit_word').on("submit", function(event) {
+    event.preventDefault();
+
+    $.ajax({
+      method: "PUT",
+      url: "/api/v1/words/:id",
+      data: $(".edit_word").serialize()
+
+    }).done(function(response) {
+      $(".notice").html(response.notice);
+      $(".drill-sentence").html("The definition of " + response.word + " is:");
+      
+    })
+  });
+});
+
+$(function(){ $(document) });

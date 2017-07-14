@@ -14,9 +14,13 @@ Rails.application.routes.draw do
     resources :drills
   end
 
-
-
   resources :words, only: [:index]
 
   root 'users#index'
+
+  namespace :api do
+    namespace :v1 do
+      resources :words
+    end
+  end
 end

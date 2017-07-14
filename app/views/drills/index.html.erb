@@ -4,6 +4,8 @@
   <p class="drill-sentence">The definition of <strong><%= @word.word %></strong> is:</p>
 
   <%= form_for [@bank, @word] do |f| %>
+    <%= f.hidden_field :word_id, value: @word.id %>
+    <%= f.hidden_field :bank_id, value: @bank.id %>
     <ul>
       <% @choices.each do |choice| %>
         <li class="drill-choice">
