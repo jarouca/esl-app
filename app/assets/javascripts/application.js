@@ -13,3 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(document).ready(function() {
+  $('.edit_word').on("submit", function(event) {
+    event.preventDefault();
+
+    $.ajax({
+      method: "PUT",
+      url: "/api/v1/words/:id",
+      data: $(".edit_word").serialize()
+    })
+  });
+});
+
+$(function(){ $(document) });
