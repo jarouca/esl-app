@@ -43,17 +43,8 @@ class Api::V1::WordsController < Api::V1::ApiController
     end
     @choices.shuffle!
 
-    # render json: {
-    #   notice: notice,
-    #   choices: @choices,
-    #   word: @word,
-    #   bank: @bank
-    # }
-
     respond_to do |format|
       format.js
-      # <%= render 'shared/update_word', bank: @bank, word: @word, choices: @choices %>
-
     end
   end
 end
