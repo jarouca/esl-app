@@ -1,4 +1,5 @@
-$(".notice").html("<%= escape_javascript(@notice) %>");
-$("#word").html("<%= escape_javascript(@word.word) %>");
-$(".edit_word").html(
-  "<%= escape_javascript(render 'shared/update_word', bank: @bank, word: @word, choices: @choices) %>");
+$(".notice").html("<%= j (@notice) %>");
+
+$("#word").html("<%= j (@word.word) %>");
+
+$(".edit_word").html("<%= j (render 'shared/update_word', bank: @bank, word:  @word, choices: @choices) %>");
