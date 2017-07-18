@@ -21,11 +21,6 @@ $(document).ready(function() {
       method: "PUT",
       url: "/api/v1/words/:id",
       data: $(".edit_word").serialize()
-
-    }).done(function(response) {
-      $(".notice").html(response.notice);
-      $(".drill-sentence").html("The definition of " + response.word + " is:");
-      
     })
   });
 });
