@@ -1,0 +1,13 @@
+<%= form_for [@bank, @word], method: :get do |f| %>
+  <%= f.hidden_field :bank_id, value: @bank.id %>
+
+  <div class="field">
+    <%= f.label :word, "Add Word" %>
+    <%= f.text_field :word %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Add Word"%>
+  </div>
+
+<% end %>

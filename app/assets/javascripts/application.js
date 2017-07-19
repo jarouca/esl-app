@@ -23,4 +23,28 @@ $(document).ready(function() {
       data: $(".edit_word").serialize()
     })
   });
+
+  $('#new_word').on("submit", function(event) {
+    event.preventDefault();
+
+    $.ajax({
+      method: "GET",
+      url: "/api/v1/words",
+      data: $("#new_word").serialize()
+    })
+  });
+
+  $('#select-word-form').on("submit", '#select_word', function(event) {
+    event.preventDefault();
+
+    $.ajax({
+      method: "POST",
+      url: "/api/v1/words",
+      data: {
+        bank_id: $('#word_bank_id').val(),
+        word: $("input[name='word']:checked"). val()
+      }
+    })
+  });
+
 });

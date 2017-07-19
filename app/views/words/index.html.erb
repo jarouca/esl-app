@@ -1,18 +1,1 @@
-<p><%= @message %></p>
-
-<%= form_for [@bank, @word] do |f| %>
-  <ul>
-    <% @definitions.each do |definition| %>
-      <li>
-        <%= radio_button_tag(:word, "#{@new_word}, (#{definition["partOfSpeech"]}), #{definition["definition"]}", required: true) %>
-        <%= label_tag(:word, "(#{definition["partOfSpeech"]}), #{definition["definition"]}") %>
-      </li>
-    <% end %>
-  </ul>
-
-
-  <div class="actions">
-    <%= f.submit "Add Word"%>
-  </div>
-
-<% end %>
+<%= render 'shared/select_word', message: @message, bank: @bank, word: @word, definitions: @definitions %>
