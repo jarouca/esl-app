@@ -4,7 +4,7 @@ class Api::V1::WordsController < Api::V1::ApiController
     @bank = Bank.find(params["bank_id"])
     words = @bank.words
     definition = params["word"].split(",")
-    word = Word.new(
+    new_word = Word.new(
       word: definition[0],
       definition: definition[2],
       part_of_speech: definition[1],
@@ -13,10 +13,10 @@ class Api::V1::WordsController < Api::V1::ApiController
     #to ensure every word is drilled an equal amount of times, set the word.total_drills equal to the current lowest word.total_drills
     if !words.empty?
       words.sort_by { |word| word.total_drills }
-      word.total_drills = words[0].total_drills
+      new_word.total_drills = words[0].total_drills
     end
 
-    if word.save
+    if new_word.save
       @bank = Bank.find(params["bank_id"])
       @message = "Word added successfully."
     end

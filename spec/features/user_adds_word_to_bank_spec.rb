@@ -30,7 +30,7 @@ feature 'user adds word to bank' do
     click_button 'Add Word'
     expect(page).to have_content("We found the following part(s) of speech and definition(s) for 'incredible'. Please select the one you would like to add to your word bank.")
     choose("word_incredible___adjective___beyond_belief_or_understanding")
-    click_button 'Add Word'
+    click_button 'Select Word'
 
     expect(page).to have_content('Word added successfully.')
     expect(page).to have_content('incredible')
@@ -57,7 +57,7 @@ feature 'user adds word to bank' do
     expect(page).to have_content('(verb), ride in a boat on water')
 
     choose("word_boat___noun___a_small_vessel_for_travel_on_water")
-    click_button 'Add Word'
+    click_button 'Select Word'
     expect(page).to have_content('Word added successfully.')
     expect(page).to have_content('boat - (noun), a small vessel for travel on water')
   end

@@ -24,7 +24,7 @@ $(document).ready(function() {
     })
   });
 
-  $('#new_word').on("submit", function(event) {
+  $('.add-word-box').on("submit", '#new_word', function(event) {
     event.preventDefault();
 
     $.ajax({
