@@ -1,4 +1,5 @@
 class BanksController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @banks = Bank.where(user_id: params["user_id"])

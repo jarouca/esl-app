@@ -1,4 +1,6 @@
 class DrillsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @bank = Bank.find(params["bank_id"])
     #ensure that each word is drilled an equal amount of times

@@ -1,7 +1,8 @@
 class Api::V1::WordsController < Api::V1::ApiController
+
   def create
-    @word = Word.new
     @bank = Bank.find(params["bank_id"])
+    @word = Word.new
     words = @bank.words
     definition = params["word"].split(",")
     new_word = Word.new(
@@ -20,7 +21,6 @@ class Api::V1::WordsController < Api::V1::ApiController
       @bank = Bank.find(params["bank_id"])
       @message = "Word added successfully."
     end
-
   end
 
   def index

@@ -1,13 +1,13 @@
-<p><%= @message %></p>
+<p id="select-word-message"><%= @message %></p>
 
 <% if @definitions %>
   <%= form_for [@bank, @word], html: { id: "select_word" } do |f| %>
     <%= f.hidden_field :word_id, value: @word.id %>
     <%= f.hidden_field :bank_id, value: @bank.id %>
 
-    <ul>
+    <ul id="definitions-list">
       <% @definitions.each do |definition| %>
-        <li>
+        <li class="select-word-option">
           <%= radio_button_tag(:word, "#{@new_word}, (#{definition["partOfSpeech"]}), #{definition["definition"]}", required: true) %>
           <%= label_tag(:word, "(#{definition["partOfSpeech"]}), #{definition["definition"]}") %>
         </li>
