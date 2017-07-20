@@ -1,4 +1,6 @@
 class WordsController < ApplicationController
+  before_action :authenticate_user!
+
   def update
     if params["choice"].nil?
       flash[:notice] = "Please be sure to select a definition"

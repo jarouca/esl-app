@@ -1,4 +1,5 @@
 class BanksController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @banks = Bank.where(user_id: params["user_id"])
@@ -7,7 +8,6 @@ class BanksController < ApplicationController
   def show
     @bank = Bank.find(params["id"])
     @word = Word.new
-    @words = Word.where(bank_id: @bank.id)
   end
 
   def edit

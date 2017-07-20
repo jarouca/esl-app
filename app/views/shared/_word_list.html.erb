@@ -1,0 +1,10 @@
+<ul class="words-list">
+  <% @bank.words.each do |word| %>
+    <li class="word">
+      <strong><%= word.word %></strong> -
+      <%= word.part_of_speech %>,
+      <%= word.definition %>
+    </li>
+      <p class="delete-word-link"><%= link_to 'Delete Word', bank_word_path(@bank, word), method: :delete, class: "link" %></p>
+  <% end %>
+</ul>

@@ -4,19 +4,11 @@
   </p>
 
   <div class="add-word-box">
-    <%= form_for [@bank, @word], method: :get do |f| %>
-
-    <div class="field">
-      <%= f.label :word, "Add Word" %>
-      <%= f.text_field :word %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Add Word"%>
-    </div>
-
-    <% end %>
+    <%= render 'shared/add_word', bank: @bank, word: @word %>
   </div>
+
+  <div id="select-word-form"></div>
+
 </div>
 
 <div class="bank-show-box">
@@ -25,16 +17,9 @@
   </h2>
   <p class="edit-bank-link"><%= link_to 'Edit Bank', edit_user_bank_path(@bank.user_id, @bank) %></p>
   <p><%= link_to 'Delete Bank', user_bank_path(@bank.user_id, @bank), method: :delete %></p>
-  <ul class="words-list">
-    <% @words.each do |word| %>
-      <li class="word">
-        <strong><%= word.word %></strong> -
-        <%= word.part_of_speech %>,
-        <%= word.definition %>
-      </li>
-        <p class="delete-word-link"><%= link_to 'Delete Word', bank_word_path(@bank, word), method: :delete, class: "link" %></p>
-    <% end %>
-  </ul>
+  <div id="word-list">
+    <%= render 'shared/word_list', bank: @bank %>
+  </div>
 </div>
 
 <% if !@bank.words[0].nil? %>

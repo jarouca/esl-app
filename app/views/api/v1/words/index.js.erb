@@ -1,0 +1,18 @@
+<% if @definitions %>
+
+  $('.notice').html("")
+
+  $('.alert').html("")
+
+
+  $('#select-word-form').show();
+
+  $("#select-word-form").html("<%= j (render 'shared/select_word', message: @message, bank: @bank, word: @word, definitions: @definitions) %>");
+
+<% else %>
+
+  $('.add-word-box').html("<%= j (render 'shared/add_word', bank: @bank, word: @word) %>");
+
+  $('.notice').html("<%= @message %>")
+
+<% end %>

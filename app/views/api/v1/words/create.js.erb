@@ -1,0 +1,7 @@
+$('.add-word-box').html("<%= j (render 'shared/add_word', bank: @bank, word: @word) %>");
+
+$('#select-word-form').hide();
+
+$('#word-list').html("<%= j (render 'shared/word_list', bank: @bank) %>");
+
+$('.notice').html("<%= @message %>")
