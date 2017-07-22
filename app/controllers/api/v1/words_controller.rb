@@ -11,7 +11,7 @@ class Api::V1::WordsController < Api::V1::ApiController
       part_of_speech: definition[1],
       bank_id: params["bank_id"]
       )
-    #to ensure every word is drilled an equal amount of times, set the word.total_drills equal to the current lowest word.total_drills
+
     if !words.empty?
       words.sort_by { |word| word.total_drills }
       new_word.total_drills = words[0].total_drills
