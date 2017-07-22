@@ -1,24 +1,30 @@
-# README
+# E-Flash
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+E-Flash is an educational Rails app designed to help learners of English as a second language expand their vocabulary. Users are able to create customized vocabulary word banks and then 'flash card' drill those words to practice learning parts of speech and definitions. An integrated external API helps users retrieve definitions and parts of speech for words. AJAX implementation helps to make for a seamless, smoother user experience as words are defined, added to the word bank and then 'drilled'. 
 
-Things you may want to cover:
+This project uses the following libraries and frameworks:
 
-* Ruby version
+- Ruby on Rails
+- Javascript
+- AJAX
+- HTTParty
 
-* System dependencies
+## Demo
 
-* Configuration
+For a live demo of the app, please visit: [E-Flash](https://esl-app.herokuapp.com/)
 
-* Database creation
+## Setup
 
-* Database initialization
+This app uses Ruby 2.2.5 and was developed on Ruby on Rails 5.0.3. 
 
-* How to run the test suite
+To install, please run the following in your terminal: 
 
-* Services (job queues, cache servers, search engines, etc.)
+### Set up Rails
 
-* Deployment instructions
-
-* ...
+```
+git clone https://github.com/jarouca/esl-app.git
+cd esl
+bundle install
+rake db:create
+rake db:migrate
+```
