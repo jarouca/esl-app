@@ -32,7 +32,7 @@ class Api::V1::WordsController < Api::V1::ApiController
     response = HTTParty.get(
       "https://wordsapiv1.p.mashape.com/words/#{@new_word}/definitions",
       headers:{
-      "X-Mashape-Key" => "i0cjA2j435mshSHKQEDvu6jNERWzp1wNjlRjsnxXRFfpg0il5D",
+      "X-Mashape-Key" => KEY,
       "Accept" => "application/json"
       }
     ).parsed_response
@@ -81,7 +81,7 @@ class Api::V1::WordsController < Api::V1::ApiController
       response = HTTParty.get(
         "https://wordsapiv1.p.mashape.com/words/?hasDetails=definitions&random=true",
         headers:{
-        "X-Mashape-Key" => "i0cjA2j435mshSHKQEDvu6jNERWzp1wNjlRjsnxXRFfpg0il5D",
+        "X-Mashape-Key" => KEY,
         "Accept" => "application/json"
         }
       ).parsed_response

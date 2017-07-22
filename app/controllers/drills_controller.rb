@@ -25,7 +25,7 @@ class DrillsController < ApplicationController
         response = HTTParty.get(
           "https://wordsapiv1.p.mashape.com/words/?hasDetails=definitions&random=true",
           headers:{
-          "X-Mashape-Key" => "i0cjA2j435mshSHKQEDvu6jNERWzp1wNjlRjsnxXRFfpg0il5D",
+          "X-Mashape-Key" => KEY,
           "Accept" => "application/json"
           }
         ).parsed_response
