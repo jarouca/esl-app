@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   end
 
   resources :banks do
-    resources :words
+    resources :words, only: [:update, :index, :create, :destroy]
   end
 
   resources :banks do
-    resources :drills
+    resources :drills, only: [:index]
   end
 
   resources :words, only: [:index]
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-        resources :words
+        resources :words, only: [:create, :index, :update]
     end
   end
 end
