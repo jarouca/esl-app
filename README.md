@@ -11,12 +11,20 @@ This project uses the following libraries and frameworks:
 
 ## Demo
 
-For a live demo of the app, please visit: 
+For a live demo of the app, please visit: [E-Flash](https://esl-app.herokuapp.com/)
 
 ## Setup
 
 This app uses Ruby 2.2.5 and was developed on Ruby on Rails 5.0.3. 
 
-To install, please run the following in your terminal:
+To install, please run the following in your terminal: 
 
+### Set up Rails
 
+```
+git clone https://github.com/jarouca/esl-app.git
+cd esl
+bundle install
+rake db:create
+rake db:migrate
+```
