@@ -8,3 +8,15 @@ This project uses the following libraries and frameworks:
 - Javascript
 - AJAX
 - HTTParty
+
+## Demo
+
+For a live demo of the app, please visit: 
+
+## Setup
+
+This app uses Ruby 2.2.5 and was developed on Ruby on Rails 5.0.3. 
+
+To install, please run the following in your terminal:
+
+
