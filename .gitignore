@@ -15,5 +15,3 @@
 
 # Ignore Byebug command history file.
 .byebug_history
-
-/config/initializers/load_key.rb
