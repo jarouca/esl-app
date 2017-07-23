@@ -35,4 +35,14 @@ To run E-Flash, please run the following command in your terminal from the esl d
 
 `rails s`
 
+Now open your browser and enter localhost:3000 in your address bar.
+
+## Testing
+
+To run the test suite, please enter the following command from the esl root directory:
+
+`rspec`
+
+
+
 
