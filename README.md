@@ -28,3 +28,11 @@ bundle install
 rake db:create
 rake db:migrate
 ```
+
+## Running the application
+
+To run E-Flash, please run the following command in your terminal from the esl directory:
+
+`rails s`
+
+
