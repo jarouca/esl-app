@@ -1,10 +1,19 @@
 <p class="message"><%= @message %></p>
 
 <div class="drill-box">
-  <p class="drill-sentence">The definition of <strong id="word"><%= @word.word %></strong> is:</p>
+  <p class="drill-sentence">The definition of <strong class="drill-word"><%= @word.word %></strong> is:</p>
 
   <%= render 'shared/update_word', bank: @bank, word: @word, choices: @choices %>
 
+  <p class="word-score">
+    Times <strong class="drill-word"><%= @word.word %></strong> answered correctly:
+    <strong id="correct-count"><%= @word.correct_answers %></strong>
+  </p>
+
+  <p class="word-score">
+    Times <strong class="drill-word"><%= @word.word %></strong> answered incorrectly:
+    <strong id="incorrect-count"><%= @word.incorrect_answers %></strong>
+  </p>
 </div>
 
 <p class="drills-index-quote">

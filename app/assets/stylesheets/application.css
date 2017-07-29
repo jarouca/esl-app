@@ -400,7 +400,7 @@ label.collection_check_boxes {
   border: 5px solid #8cbee0;
   margin: 30px auto 20px auto;
   width: 900px;
-  height: 300px;
+  overflow: auto;
   font-size: 20px;
 }
 
@@ -434,5 +434,12 @@ label.collection_check_boxes {
   text-align: center;
 }
 
-.word {
+.word-score {
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.drill-word {
+  text-decoration: underline;
 }

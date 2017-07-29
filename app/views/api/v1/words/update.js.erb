@@ -1,5 +1,9 @@
 $(".notice").html("<%= j (@notice) %>");
 
-$("#word").html("<%= j (@word.word) %>");
+$(".drill-word").html("<%= j (@word.word) %>");
+
+$("#correct-count").html("<%= j (@word.correct_answers.to_s) %>");
+
+$("#incorrect-count").html("<%= j (@word.incorrect_answers.to_s) %>");
 
 $(".edit_word").html("<%= j (render 'shared/update_word', bank: @bank, word:  @word, choices: @choices) %>");
