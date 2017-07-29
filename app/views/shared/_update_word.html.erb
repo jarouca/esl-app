@@ -14,3 +14,13 @@
     <%= f.submit "Submit Answer" %>
   </div>
 <% end %>
+
+<p>
+  Times <strong><%= @word.word %></strong> answered correctly:
+  <%= @word.correct_answers %>
+</p>
+
+<p>
+  Times <strong><%= @word.word %></strong> answered incorrectly:
+  <%= @word.incorrect_answers %>
+</p>
