@@ -26,13 +26,13 @@ class WordsController < ApplicationController
     @new_word = params["word"]["word"]
     response = nil
 
-    response = HTTParty.get(
-      "https://wordsapiv1.p.mashape.com/words/#{@new_word}/definitions",
-      headers:{
-      "X-Mashape-Key" => KEY,
-      "Accept" => "application/json"
-      }
-    ).parsed_response
+    # response = HTTParty.get(
+    #   "https://wordsapiv1.p.mashape.com/words/#{@new_word}/definitions",
+    #   headers:{
+    #   "X-Mashape-Key" => KEY,
+    #   "Accept" => "application/json"
+    #   }
+    # ).parsed_response
 
     if response["definitions"].nil?
       flash[:alert] = 'We did not find any matches for that word. Please check the spelling and try again'
