@@ -71,13 +71,7 @@ class Api::V1::WordsController < Api::V1::ApiController
     @choices << "#{@word.part_of_speech}, #{@word.definition}"
     #retrieve multiple choice definition options from the external API
     2.times do
-      response = HTTParty.get(
-        "https://wordsapiv1.p.mashape.com/words/?hasDetails=definitions&random=true",
-        headers:{
-        "X-Mashape-Key" => KEY,
-        "Accept" => "application/json"
-        }
-      ).parsed_response
+      response = MashapeApi.get("?hasDetails=definitions&random=true")
 
       @choices << "(#{response["results"][0]["partOfSpeech"]}), #{response["results"][0]["definition"]}"
     end
