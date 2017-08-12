@@ -27,15 +27,8 @@ class Api::V1::WordsController < Api::V1::ApiController
     @bank = Bank.find(params["word"]["bank_id"].to_i)
     @word = Word.new
     @new_word = params["word"]["word"]
-    response = nil
 
-    response = HTTParty.get(
-      "https://wordsapiv1.p.mashape.com/words/#{@new_word}/definitions",
-      headers:{
-      "X-Mashape-Key" => KEY,
-      "Accept" => "application/json"
-      }
-    ).parsed_response
+    response = MashapeApi.get("#{@new_word}/definitions")
 
     if response["definitions"].nil?
       @message = 'We did not find any matches for that word. Please check the spelling and try again.'
