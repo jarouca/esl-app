@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+1000.times do
+  response = MashapeApi.get("?hasDetails=definitions&random=true")
+
+  if response["word"] &&
+    response["results"][0]["partOfSpeech"] &&
+    response["results"][0]["definition"]
+
+    RandomWord.find_or_create_by!(
+      word: response["word"],
+      part_of_speech: response["results"][0]["partOfSpeech"],
+      definition: response["results"][0]["definition"]
+      )
+  end
+end
