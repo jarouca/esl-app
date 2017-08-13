@@ -20,12 +20,14 @@ class DrillsController < ApplicationController
       #retrieve random word definitions from the external API to populate the multiple choice data:
       @choices = []
       @choices << "#{@word.part_of_speech}, #{@word.definition}"
-      #retrieve multiple choice definition options from the external API
+      #retrieve multiple choice definition options from the random_words table
       2.times do
-        response = MashapeApi.get("?hasDetails=definitions&random=true")
+        random_id = rand(1..RandomWord.count)
+        random_word = RandomWord.find(random_id)
 
-        @choices << "(#{response["results"][0]["partOfSpeech"]}), #{response["results"][0]["definition"]}"
+        @choices << "(#{random_word.part_of_speech}), #{random_word.definition}"
       end
+
       @choices.shuffle!
     end
   end

@@ -12,6 +12,21 @@ feature 'flash card drill words from word bank' do
   # - I will be told if I am correct or incorrect
   # - Every word from my word bank will be drilled before repeating any words, this pattern will continue for every round of drilling
 
+  20.times do
+    response = MashapeApi.get("?hasDetails=definitions&random=true")
+
+    if response["word"] &&
+      response["results"][0]["partOfSpeech"] &&
+      response["results"][0]["definition"]
+
+      RandomWord.find_or_create_by!(
+        word: response["word"],
+        part_of_speech: response["results"][0]["partOfSpeech"],
+        definition: response["results"][0]["definition"]
+        )
+    end
+  end
+
   scenario 'user selects correct definition for vocabulary word' do
     user = FactoryGirl.create(:user)
     bank = FactoryGirl.create(:bank, user_id: user.id)

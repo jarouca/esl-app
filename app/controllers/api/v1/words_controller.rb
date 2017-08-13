@@ -69,11 +69,14 @@ class Api::V1::WordsController < Api::V1::ApiController
 
     @choices = []
     @choices << "#{@word.part_of_speech}, #{@word.definition}"
-    #retrieve multiple choice definition options from the external API
+    #retrieve multiple choice definition options from the random_words table
     2.times do
-      response = MashapeApi.get("?hasDetails=definitions&random=true")
-      @choices << "(#{response["results"][0]["partOfSpeech"]}), #{response["results"][0]["definition"]}"
+      random_id = rand(1..RandomWord.count)
+      random_word = RandomWord.find(random_id)
+
+      @choices << "(#{random_word.part_of_speech}), #{random_word.definition}"
     end
+
     @choices.shuffle!
   end
 

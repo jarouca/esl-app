@@ -13,7 +13,7 @@
     response["results"][0]["partOfSpeech"] &&
     response["results"][0]["definition"]
 
-    RandomWord.create!(
+    RandomWord.find_or_create_by!(
       word: response["word"],
       part_of_speech: response["results"][0]["partOfSpeech"],
       definition: response["results"][0]["definition"]
