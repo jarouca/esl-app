@@ -9,9 +9,10 @@ feature 'user deletes a bank' do
   # - I can only delete banks that I own
   # - I must receive notification that the deletion was successful
 
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:bank) { FactoryGirl.create(:bank, user_id: user.id) }
+
   scenario 'authenticated user successfully deletes a word bank' do
-    user = FactoryGirl.create(:user)
-    bank = FactoryGirl.create(:bank, user_id: user.id)
 
     visit 'users/sign_in'
     click_link 'Sign In'

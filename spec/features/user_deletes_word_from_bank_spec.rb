@@ -12,10 +12,11 @@ feature 'user deletes word form bank' do
   # - I must receive notification that the deletion was successful
   # - Upon completion I must be redirected to the bank#show page
 
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:bank) { FactoryGirl.create(:bank, user_id: user.id) }
+  let! (:word) { FactoryGirl.create(:word, bank: bank, part_of_speech: "(adjective)", definition: " beyond belief or understanding" ) }
+
   scenario 'authenticated user deletes word from bank' do
-    user = FactoryGirl.create(:user)
-    bank = FactoryGirl.create(:bank, user_id: user.id)
-    word = FactoryGirl.create(:word, bank: bank, part_of_speech: "(adjective)", definition: " beyond belief or understanding" )
 
     visit 'users/sign_in'
     click_link 'Sign In'

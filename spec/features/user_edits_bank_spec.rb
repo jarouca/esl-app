@@ -9,9 +9,10 @@ feature 'user updates a bank' do
   # * I must be signed in to edit a word bank
   # * I must be able to access the update page the bank's show page
 
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:bank) { FactoryGirl.create(:bank, user_id: user.id) }
+
   scenario 'user successfully updates a submission' do
-    user = FactoryGirl.create(:user)
-    bank = FactoryGirl.create(:bank, user_id: user.id)
 
     visit 'users/sign_in'
     click_link 'Sign In'
@@ -29,8 +30,6 @@ feature 'user updates a bank' do
   end
 
   scenario 'user fails to provide required information' do
-    user = FactoryGirl.create(:user)
-    bank = FactoryGirl.create(:bank, user_id: user.id)
 
     visit 'users/sign_in'
     click_link 'Sign In'
