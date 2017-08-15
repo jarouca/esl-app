@@ -14,10 +14,10 @@ feature 'user adds word to bank' do
   # - if there is more than one word with the same spelling I must be asked to confirm which word I want to select
   # - if more than one word has the same spelling I must be asked to confirm which word I want to select
 
-  scenario 'authenticated user successfully adds a word to their word bank' do
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:bank) { FactoryGirl.create(:bank, user_id: user.id) }
 
-    user = FactoryGirl.create(:user)
-    bank = FactoryGirl.create(:bank, user_id: user.id)
+  scenario 'authenticated user successfully adds a word to their word bank' do
 
     visit 'users/sign_in'
     click_link 'Sign In'
@@ -38,8 +38,6 @@ feature 'user adds word to bank' do
   end
 
   scenario "authenticated user is able to confirm which definition they want to select when they've entered a word that has more than one definition" do
-    user = FactoryGirl.create(:user)
-    bank = FactoryGirl.create(:bank, user_id: user.id)
 
     visit 'users/sign_in'
     click_link 'Sign In'
@@ -63,8 +61,6 @@ feature 'user adds word to bank' do
   end
 
   scenario "authenticated user mispells word" do
-    user = FactoryGirl.create(:user)
-    bank = FactoryGirl.create(:bank, user_id: user.id)
 
     visit 'users/sign_in'
     click_link 'Sign In'
@@ -80,8 +76,6 @@ feature 'user adds word to bank' do
   end
 
   scenario "authenticated user enters a blank string" do
-    user = FactoryGirl.create(:user)
-    bank = FactoryGirl.create(:bank, user_id: user.id)
 
     visit 'users/sign_in'
     click_link 'Sign In'
