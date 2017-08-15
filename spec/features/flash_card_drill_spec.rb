@@ -27,16 +27,14 @@ feature 'flash card drill words from word bank' do
     end
   end
 
-  scenario 'user selects correct definition for vocabulary word' do
-    user = FactoryGirl.create(:user)
-    bank = FactoryGirl.create(:bank, user_id: user.id)
-    word = FactoryGirl.create(:word, bank: bank, part_of_speech: "(adjective)", definition: " beyond belief or understanding" )
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:bank) { FactoryGirl.create(:bank, user_id: user.id) }
+  let!(:word) { FactoryGirl.create(:word, bank: bank, part_of_speech: "(adjective)", definition: " beyond belief or understanding")}
+  let!(:second_word) { FactoryGirl.create(:word, bank: bank, total_drills: 1) }
 
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+  scenario 'user selects correct definition for vocabulary word' do
+    login_as(user, :scope => :user)
+    visit root_path
     click_link 'View My Word Banks'
     click_link bank.title
     click_link 'Drill Vocabulary Words'
@@ -47,16 +45,8 @@ feature 'flash card drill words from word bank' do
   end
 
   scenario 'a word is not repeated until all words have been drilled' do
-    user = FactoryGirl.create(:user)
-    bank = FactoryGirl.create(:bank, user_id: user.id)
-    word = FactoryGirl.create(:word, bank: bank, part_of_speech: "(adjective)", definition: " beyond belief or understanding")
-    second_word = FactoryGirl.create(:word, bank: bank, total_drills: 1)
-
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    login_as(user, :scope => :user)
+    visit root_path
     click_link 'View My Word Banks'
     click_link bank.title
     click_link 'Drill Vocabulary Words'
@@ -65,15 +55,8 @@ feature 'flash card drill words from word bank' do
   end
 
   scenario 'user fails to select a definition' do
-    user = FactoryGirl.create(:user)
-    bank = FactoryGirl.create(:bank, user_id: user.id)
-    word = FactoryGirl.create(:word, bank: bank, part_of_speech: "(adjective)", definition: " beyond belief or understanding" )
-
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    login_as(user, :scope => :user)
+    visit root_path
     click_link 'View My Word Banks'
     click_link bank.title
     click_link 'Drill Vocabulary Words'

@@ -10,9 +10,9 @@ feature 'user signs in' do
   #   I am authenticated and I gain access to the system
   # * If I specify an invalid email and password, I remain unauthenticated
   # * If I am already signed in, I can't sign in again
+  let!(:user) { FactoryGirl.create(:user) }
 
   scenario 'an existing user specifies a valid email and password' do
-    user = FactoryGirl.create(:user)
     visit root_path
     click_link 'Sign In'
     fill_in 'Email', with: user.email
@@ -22,6 +22,7 @@ feature 'user signs in' do
     expect(page).to have_content('Welcome back')
     expect(page).to have_content('Sign Out')
   end
+
   scenario 'an invalid email and password is supplied' do
     visit 'users/sign_in'
     click_link 'Sign In'
@@ -35,7 +36,6 @@ feature 'user signs in' do
   end
 
   scenario 'an existing email with the wrong password is denied access' do
-    user = FactoryGirl.create(:user)
     visit 'users/sign_in'
     click_link 'Sign In'
     fill_in 'Email', with: user.email
@@ -47,7 +47,6 @@ feature 'user signs in' do
   end
 
   scenario 'an already authenticated user cannot re-sign in' do
-    user = FactoryGirl.create(:user)
     visit 'users/sign_in'
     click_link 'Sign In'
     fill_in 'Email', with: user.email

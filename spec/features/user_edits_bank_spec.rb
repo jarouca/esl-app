@@ -9,15 +9,12 @@ feature 'user updates a bank' do
   # * I must be signed in to edit a word bank
   # * I must be able to access the update page the bank's show page
 
-  scenario 'user successfully updates a submission' do
-    user = FactoryGirl.create(:user)
-    bank = FactoryGirl.create(:bank, user_id: user.id)
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:bank) { FactoryGirl.create(:bank, user_id: user.id) }
 
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+  scenario 'user successfully updates a submission' do
+    login_as(user, :scope => :user)
+    visit root_path
     click_link 'View My Word Banks'
     click_link bank.title
     click_link 'Edit Bank'
@@ -29,14 +26,8 @@ feature 'user updates a bank' do
   end
 
   scenario 'user fails to provide required information' do
-    user = FactoryGirl.create(:user)
-    bank = FactoryGirl.create(:bank, user_id: user.id)
-
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    login_as(user, :scope => :user)
+    visit root_path
     click_link 'View My Word Banks'
     click_link bank.title
     click_link 'Edit Bank'

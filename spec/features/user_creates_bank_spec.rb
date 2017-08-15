@@ -9,14 +9,11 @@ feature 'user creates a bank' do
   # - I must provide a bank title
   # - I can create more than one bank (maybe I should set a limit on how many banks a user can have at one time?)
   # - if creation is successful I must be directed to the user's bank#index page
+  let!(:user) { FactoryGirl.create(:user) }
 
   scenario 'authenticated user successfully creates a bank' do
-    user = FactoryGirl.create(:user)
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    login_as(user, :scope => :user)
+    visit root_path
     click_link 'Create Word Bank'
     fill_in 'Title', with: 'Level 3 Vocabulary'
 
@@ -25,12 +22,7 @@ feature 'user creates a bank' do
   end
 
   scenario 'user does not supply required information' do
-    user = FactoryGirl.create(:user)
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    login_as(user, :scope => :user)
     visit root_path
     click_link 'Create Word Bank'
 

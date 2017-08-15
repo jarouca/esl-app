@@ -9,14 +9,11 @@ feature 'user deletes their account' do
   # - I must be able to access the 'delete profile' link from the 'edit profile' page
   # - I must be given notification that my deletion was successful
 
+  let!(:user) { FactoryGirl.create(:user) }
 
   scenario 'authenticated user deletes account' do
-    user = FactoryGirl.create(:user)
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    login_as(user, :scope => :user)
+    visit root_path
     click_link 'Edit Profile'
     click_link 'Cancel my account'
 
