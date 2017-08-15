@@ -8,9 +8,9 @@ feature 'user updates their profile information' do
   # Acceptance criteria:
   # - I must be able to access the 'edit profile' page from the top bar      displayed on every page
   # - I must be given a notification if my update was successful
+  let!(:user) { FactoryGirl.create(:user) }
 
   scenario 'authenticated user updates their information' do
-    user = FactoryGirl.create(:user)
     visit 'users/sign_in'
     click_link 'Sign In'
     fill_in 'Email', with: user.email

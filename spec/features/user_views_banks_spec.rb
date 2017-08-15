@@ -4,13 +4,13 @@ feature 'user views a list of all of their banks' do
   # As an authenticated user
   # I want to view a list of my word banks
   # So I can see all the banks I've created
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:first_bank) { FactoryGirl.create(:bank, user_id: user.id) }
+  let! (:second_bank) { FactoryGirl.create(:bank, user_id: user.id) }
+  let! (:third_bank) { FactoryGirl.create(:bank, user_id: user.id) }
+  let! (:fourth_bank) { FactoryGirl.create(:bank, user_id: user.id) }
 
   scenario 'user successfully views list of their word banks' do
-    user = FactoryGirl.create(:user)
-    first_bank = FactoryGirl.create(:bank, user_id: user.id)
-    second_bank = FactoryGirl.create(:bank, user_id: user.id)
-    third_bank = FactoryGirl.create(:bank, user_id: user.id)
-    fourth_bank = FactoryGirl.create(:bank, user_id: user.id)
 
     visit 'users/sign_in'
     click_link 'Sign In'

@@ -1,11 +1,12 @@
 require 'rails_helper'
 
-feature '' do
+feature 'user signs out' do
   # As an authenticated user
   # I want to sign out
   # So that no one else can use my profile
+  let!(:user) { FactoryGirl.create(:user) }
+
   scenario 'authenticated user signs out' do
-    user = FactoryGirl.create(:user)
     visit 'users/sign_in'
     click_link 'Sign In'
     fill_in 'Email', with: user.email
