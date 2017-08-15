@@ -18,12 +18,8 @@ feature 'user adds word to bank' do
   let!(:bank) { FactoryGirl.create(:bank, user_id: user.id) }
 
   scenario 'authenticated user successfully adds a word to their word bank' do
-
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    login_as(user, :scope => :user)
+    visit root_path
     click_link 'View My Word Banks'
     click_link bank.title
     fill_in 'Add Word', with: 'incredible'
@@ -38,12 +34,8 @@ feature 'user adds word to bank' do
   end
 
   scenario "authenticated user is able to confirm which definition they want to select when they've entered a word that has more than one definition" do
-
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    login_as(user, :scope => :user)
+    visit root_path
     click_link 'View My Word Banks'
     click_link bank.title
     fill_in 'Add Word', with: 'boat'
@@ -61,12 +53,8 @@ feature 'user adds word to bank' do
   end
 
   scenario "authenticated user mispells word" do
-
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    login_as(user, :scope => :user)
+    visit root_path
     click_link 'View My Word Banks'
     click_link bank.title
     fill_in 'Add Word', with: 'ahjsgfshj'
@@ -76,12 +64,8 @@ feature 'user adds word to bank' do
   end
 
   scenario "authenticated user enters a blank string" do
-
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    login_as(user, :scope => :user)
+    visit root_path
     click_link 'View My Word Banks'
     click_link bank.title
     fill_in 'Add Word', with: ''

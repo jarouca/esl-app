@@ -22,6 +22,7 @@ feature 'user signs in' do
     expect(page).to have_content('Welcome back')
     expect(page).to have_content('Sign Out')
   end
+
   scenario 'an invalid email and password is supplied' do
     visit 'users/sign_in'
     click_link 'Sign In'

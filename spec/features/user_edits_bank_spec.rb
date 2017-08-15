@@ -13,12 +13,8 @@ feature 'user updates a bank' do
   let!(:bank) { FactoryGirl.create(:bank, user_id: user.id) }
 
   scenario 'user successfully updates a submission' do
-
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    login_as(user, :scope => :user)
+    visit root_path
     click_link 'View My Word Banks'
     click_link bank.title
     click_link 'Edit Bank'
@@ -30,12 +26,8 @@ feature 'user updates a bank' do
   end
 
   scenario 'user fails to provide required information' do
-
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    login_as(user, :scope => :user)
+    visit root_path
     click_link 'View My Word Banks'
     click_link bank.title
     click_link 'Edit Bank'

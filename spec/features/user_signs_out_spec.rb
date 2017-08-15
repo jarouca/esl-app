@@ -7,11 +7,8 @@ feature 'user signs out' do
   let!(:user) { FactoryGirl.create(:user) }
 
   scenario 'authenticated user signs out' do
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    login_as(user, :scope => :user)
+    visit root_path
     click_link 'Sign Out'
 
     expect(page).to have_content('Signed out successfully.')

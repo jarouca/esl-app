@@ -13,12 +13,8 @@ feature 'user deletes a bank' do
   let!(:bank) { FactoryGirl.create(:bank, user_id: user.id) }
 
   scenario 'authenticated user successfully deletes a word bank' do
-
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    login_as(user, :scope => :user)
+    visit root_path
     click_link 'View My Word Banks'
     click_link bank.title
     click_link 'Delete Bank'

@@ -11,12 +11,8 @@ feature 'user views a list of all of their banks' do
   let! (:fourth_bank) { FactoryGirl.create(:bank, user_id: user.id) }
 
   scenario 'user successfully views list of their word banks' do
-
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    login_as(user, :scope => :user)
+    visit root_path
     click_link 'View My Word Banks'
 
     expect(page).to have_content(first_bank.title)

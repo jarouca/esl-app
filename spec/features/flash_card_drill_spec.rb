@@ -33,12 +33,8 @@ feature 'flash card drill words from word bank' do
   let!(:second_word) { FactoryGirl.create(:word, bank: bank, total_drills: 1) }
 
   scenario 'user selects correct definition for vocabulary word' do
-
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    login_as(user, :scope => :user)
+    visit root_path
     click_link 'View My Word Banks'
     click_link bank.title
     click_link 'Drill Vocabulary Words'
@@ -49,12 +45,8 @@ feature 'flash card drill words from word bank' do
   end
 
   scenario 'a word is not repeated until all words have been drilled' do
-
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    login_as(user, :scope => :user)
+    visit root_path
     click_link 'View My Word Banks'
     click_link bank.title
     click_link 'Drill Vocabulary Words'
@@ -63,12 +55,8 @@ feature 'flash card drill words from word bank' do
   end
 
   scenario 'user fails to select a definition' do
-
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    login_as(user, :scope => :user)
+    visit root_path
     click_link 'View My Word Banks'
     click_link bank.title
     click_link 'Drill Vocabulary Words'
