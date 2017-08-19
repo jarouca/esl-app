@@ -347,10 +347,6 @@ label.collection_check_boxes {
   margin-left: 5px;
 }
 
-.drill-link-box {
-
-}
-
 .drill-link {
   font-size: 25px;
   margin-top: 20px;
@@ -446,6 +442,14 @@ label.collection_check_boxes {
   text-decoration: underline;
 }
 
-#bank_title {
+.field input {
   width: 400px;
+  height: 24px;
+}
+
+.field .title {
+  float: left;
+  font-size: 25px;
+  margin-right: 20px;
+
 }
