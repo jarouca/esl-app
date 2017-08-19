@@ -127,11 +127,13 @@ html, body {
 
 .form-box {
   padding: 20px;
-  width: 400px;
+  width: 800px;
   background-color: #8cd0e0;
   margin: 20px auto 5px auto;
   border: 5px solid #8cbee0;
 }
+
+
 
 .simple_form div.input {
   margin-bottom: 10px;
@@ -442,4 +444,8 @@ label.collection_check_boxes {
 
 .drill-word {
   text-decoration: underline;
+}
+
+#bank_title {
+  width: 400px;
 }
