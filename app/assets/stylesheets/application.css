@@ -442,7 +442,7 @@ label.collection_check_boxes {
   text-decoration: underline;
 }
 
-.field input {
+.field input, .form-inputs input {
   width: 400px;
   height: 24px;
 }
@@ -450,6 +450,13 @@ label.collection_check_boxes {
 .field .title {
   float: left;
   font-size: 25px;
+  margin-right: 20px;
+  margin-left: 0px;
+}
+
+.form-inputs label {
+  float: left;
+  font-size: 18px;
   margin-right: 20px;
   margin-left: 0px;
 
