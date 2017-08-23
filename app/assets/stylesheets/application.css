@@ -447,6 +447,10 @@ label.collection_check_boxes {
   height: 24px;
 }
 
+#user_remember_me {
+  width: 20px;
+}
+
 .field .title {
   float: left;
   font-size: 25px;
