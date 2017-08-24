@@ -80,7 +80,7 @@ html, body {
 .top-bar-right li {
   float: right;
   margin-right: 20px;
-  padding-top: 25px;
+  padding-top: 15px;
   font-size: 18px;
 }
 
@@ -103,7 +103,7 @@ html, body {
 }
 
 .new-word-bank {
-  font-size: 18px;
+  font-size: 24px;
   margin-bottom: 20px;
 }
 
@@ -127,11 +127,13 @@ html, body {
 
 .form-box {
   padding: 20px;
-  width: 400px;
+  width: 800px;
   background-color: #8cd0e0;
   margin: 20px auto 5px auto;
   border: 5px solid #8cbee0;
 }
+
+
 
 .simple_form div.input {
   margin-bottom: 10px;
@@ -345,10 +347,6 @@ label.collection_check_boxes {
   margin-left: 5px;
 }
 
-.drill-link-box {
-
-}
-
 .drill-link {
   font-size: 25px;
   margin-top: 20px;
@@ -442,4 +440,36 @@ label.collection_check_boxes {
 
 .drill-word {
   text-decoration: underline;
+}
+
+.field input, .form-inputs input {
+  width: 400px;
+  height: 24px;
+}
+
+#user_remember_me {
+  width: 20px;
+}
+
+.field .title {
+  float: left;
+  font-size: 25px;
+  margin-right: 20px;
+  margin-left: 0px;
+}
+
+.form-inputs label {
+  float: left;
+  font-size: 18px;
+  margin-right: 20px;
+  margin-left: 0px;
+
+}
+
+.button {
+  font-size: 20px;
+}
+
+#word_word {
+  width: 138px;
 }
