@@ -445,6 +445,7 @@ label.collection_check_boxes {
 .field input, .form-inputs input {
   width: 400px;
   height: 24px;
+  font-size: 16px;
 }
 
 #user_remember_me {
