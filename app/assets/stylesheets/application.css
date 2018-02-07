@@ -362,6 +362,10 @@ label.collection_check_boxes {
   margin-top: 40px;
 }
 
+.drill-link-box {
+  
+}
+
 .bank-show-quote {
   margin-top: 40px;
   font-family: "Apple Chancery";
@@ -385,6 +389,8 @@ label.collection_check_boxes {
   margin-top: 40px;
   font-size: 30px;
 }
+
+
 
 .banks-index-quote-right {
   margin-left: 50px;
