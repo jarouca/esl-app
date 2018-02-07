@@ -362,8 +362,12 @@ label.collection_check_boxes {
   margin-top: 40px;
 }
 
+.bank-show-right-column {
+  float: left;
+}
+
 .drill-link-box {
-  
+
 }
 
 .bank-show-quote {
