@@ -364,6 +364,8 @@ label.collection_check_boxes {
 
 .bank-show-right-column {
   float: left;
+  width: 400px;
+
 }
 
 .drill-link-box {
@@ -375,6 +377,7 @@ label.collection_check_boxes {
   font-family: "Apple Chancery";
   font-size: 40px;
   text-align: center;
+  margin-right: 20px;
 }
 
 .drills-index-quote, .users-index-quote, .users-sign-up-quote {
